@@ -1,0 +1,57 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #12141c;
+  color: #f2efe6;
+}
+.card {
+  background: #1a1d29;
+  border-radius: 16px;
+  padding: 28px;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 
+    0 20px 40px -20px rgba(0,0,0,0.5),   /* м'яка тінь знизу */
+    0 0 0 1px rgba(255,255,255,0.03) inset; /* тонкий внутрішній контур */
+  transition: transform 0.25s cubic-bezier(.2,.8,.2,1), box-shadow 0.25s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 30px 60px -20px rgba(0,0,0,0.6);
+}
+.glass-card {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 20px;
+}
+.gradient-border {
+  position: relative;
+  background: #12141c;
+  border-radius: 16px;
+  padding: 24px;
+}
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 2px;
+  background: linear-gradient(135deg, #e8b94d, #5ec8b8);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+.neo-card {
+  background: #1e2028;
+  border-radius: 20px;
+  box-shadow:
+    8px 8px 16px rgba(0,0,0,0.4),
+    -8px -8px 16px rgba(255,255,255,0.03);
+}
