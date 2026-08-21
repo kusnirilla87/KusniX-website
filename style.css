@@ -1,42 +1,62 @@
+/* Скидання базових відступів і налаштування розрахунку розмірів (Box Model) */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Основні стилі для усієї сторінки (темний фон, світлий текст, шрифт) */
 body {
   font-family: 'Segoe UI', sans-serif;
   background: #12141c;
   color: #f2efe6;
 }
+html {
+  scroll-behavior: smooth;
+}
+/* 1. СТАНДАРТНА КАРТКА З АНІМАЦІЄЮ ПРИ НАВЕДЕННІ (Card with Hover)
+   Має м'яку тінь, тонкий контур та піднімається вгору при наведенні курсора */
 .card {
   background: #1a1d29;
   border-radius: 16px;
+  margin-left: 1rem;
+  margin-right:1rem;
+  margin-top:1rem;
   padding: 28px;
-  border: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 
-    0 20px 40px -20px rgba(0,0,0,0.5),   /* м'яка тінь знизу */
-    0 0 0 1px rgba(255,255,255,0.03) inset; /* тонкий внутрішній контур */
-  transition: transform 0.25s cubic-bezier(.2,.8,.2,1), box-shadow 0.25s;
+  border: 3px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 20px 40px -20px rgba(0, 0, 0, 0.5),      /* м'яка тінь знизу */
+    0 0 0 1px rgba(255, 255, 255, 0.03) inset; /* тонкий внутрішній контур */
+  transition: transform 0.25s cubic-bezier(.2, .8, .2, 1), box-shadow 0.25s;
+
 }
 
+/* Ефект підняття картки при наведенні миші */
 .card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 30px 60px -20px rgba(0,0,0,0.6);
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.6);
 }
+
+/* 2. КАРТКА З ЕФЕКТОМ "МАТОВОГО СКЛА" (Glassmorphism Card)
+   Напівпрозора, розмиває фон під собою (потрібен кольоровий фон ззаду) */
 .glass-card {
-  background: rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255,255,255,0.15);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 20px;
 }
+
+/* 3. КАРТКА З ГРАДІЄНТНОЮ РАМКОЮ (Gradient Border Card)
+   Має тонку стильну рамку, яка переливається з золотистого в бірюзовий */
 .gradient-border {
   position: relative;
   background: #12141c;
   border-radius: 16px;
   padding: 24px;
 }
+
+/* Псевдоелемент, який створює сам градієнтний контур */
 .gradient-border::before {
   content: '';
   position: absolute;
@@ -48,10 +68,81 @@ body {
   -webkit-mask-composite: xor;
   mask-composite: exclude;
 }
+
+/* 4. ТЕМНА НЕОМОРФНА КАРТКА (Neumorphism / Soft UI)
+   Створює ефект об'ємної деталі за рахунок подвійної тіні (темна знизу, світла зверху) */
 .neo-card {
   background: #1e2028;
   border-radius: 20px;
   box-shadow:
-    8px 8px 16px rgba(0,0,0,0.4),
-    -8px -8px 16px rgba(255,255,255,0.03);
+    8px 8px 16px rgba(0, 0, 0, 0.4),
+    -8px -8px 16px rgba(255, 255, 255, 0.03);
+}
+.gray-text {
+    color:gray
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
+  margin-left: 1rem;
+  margin-right:1rem;
+  margin-top:1rem;
+  border-radius:13px;
+  border:1px solid gray;
+  align-items: center;
+  padding: 1rem 2rem;
+  color: white;
+  top: 0;
+  z-index: 1000; /* Гарантує, що шапка буде поверх іншого контенту */
+  background-color: black;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+a {
+  text-decoration: none;
+  color:inherit;
+}
+a:hover {
+    color:#FFD400
+}
+.whitetext {
+    color:white
+}
+.red-text {
+    color:red
+}
+.nav-padding {
+    margin:5px;
+    margin-left:35px;
+    display: inline-block;
+}
+.nav-download {
+    margin-left: 9rem; /* або будь-яке інше значення, наприклад 150px чи 20vw */
+}
+.download-button {
+    background: transparent;
+    border-radius:23px;
+    border-color:blue;
+    width: 20rem;
+    height:5rem;
+    color: lightgray ;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.download-button:hover {
+  background: linear-gradient(90deg, #2563eb, #8b5cf6, #d946ef); /* Градієнт як на фото */
+  border-color: transparent; /* Ховаємо рамку, коли з'являється заливка */
+  box-shadow: 0 0 15px rgba(139, 92, 246, 0.4); /* М'яке сяйво навколо */
+
+}
+.download-button:active {
+    transition: 100ms;
+    background: transparent;
+
 }
