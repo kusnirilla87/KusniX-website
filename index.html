@@ -83,6 +83,17 @@
 
 
 
+  <script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target); // анімація один раз
+      }
+    });
+  }, { threshold: 0.2 });
 
+  document.querySelectorAll('.feature-block').forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
