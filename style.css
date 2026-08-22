@@ -146,3 +146,13 @@ a:hover {
     background: transparent;
 
 }
+.feature-block {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.feature-block.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
